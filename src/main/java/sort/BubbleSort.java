@@ -1,12 +1,18 @@
 package sort;
 
+import lombok.extern.slf4j.Slf4j;
+import org.apache.log4j.BasicConfigurator;
+
 import java.util.Arrays;
 
+@Slf4j
 public class BubbleSort implements ISort {
 	public static void main(String[] args) {
-		int[] arr = { 8, 9, 1, 7, 2, 3, 5, 4, 6, 0 };
+		BasicConfigurator.configure();
+//		int[] arr = { 8, 9, 1, 7, 2, 3, 5, 4, 6, 0 };
+		int[] arr = ArrUtil.getArr(10);
 		new BubbleSort().sort(arr);
-		System.out.println(Arrays.toString(arr));
+		log.info(Arrays.toString(arr));
 	}
 	
 	public void sort(int[] arr) {

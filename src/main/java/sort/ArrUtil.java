@@ -1,6 +1,6 @@
 package sort;
 
-public class GenerateArr {
+public class ArrUtil {
 	public static int[] getArr(int maxSize) {
 		int[] arr = new int[maxSize];
 		for(int i=0; i<maxSize; i++) {

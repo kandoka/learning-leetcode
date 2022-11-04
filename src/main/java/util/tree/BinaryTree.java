@@ -14,7 +14,8 @@ public class BinaryTree {
     public static void main(String[] args) {
         BasicConfigurator.configure();
         BinaryTreeNode leftRight = new BinaryTreeNode().setVal(3);
-        BinaryTreeNode left = new BinaryTreeNode().setVal(2).setRight(leftRight);
+        BinaryTreeNode leftLeft = new BinaryTreeNode().setVal(4);
+        BinaryTreeNode left = new BinaryTreeNode().setVal(2).setRight(leftRight).setLeft(leftLeft);
         BinaryTreeNode root = new BinaryTreeNode().setVal(1).setLeft(left);
         log.info(BinaryTree.prettyPrint(root));
     }
@@ -54,7 +55,9 @@ public class BinaryTree {
             }
             sb.append("\n");
         }
-        return sb.toString();
+        String print = sb.toString();
+        log.info(print);
+        return print;
     }
 
     private static void toArray(BinaryTreeNode curNode, int rowIndex, int colIndex, String[][] target, int depth) {
@@ -65,7 +68,7 @@ public class BinaryTree {
         target[rowIndex][colIndex] = String.valueOf(curNode.getVal());
         //计算当前位于树的第几层
         int curLevel = (rowIndex + 1) / 2;
-        log.info("curLevel: {}, depth: {}, rowIndex: {}, colIndex: {}, line: {}", curLevel, depth, rowIndex, colIndex, target[rowIndex]);
+//        log.info("curLevel: {}, depth: {}, rowIndex: {}, colIndex: {}, line: {}", curLevel, depth, rowIndex, colIndex, target[rowIndex]);
         if(curLevel == depth) {
             //如果是最后一层，则返回
             return;
@@ -75,14 +78,14 @@ public class BinaryTree {
 
         //递归左子树
         if(curNode.getLeft() != null) {
-            log.info("to left node: {}", curNode.getLeft().getVal());
+//            log.info("to left node: {}", curNode.getLeft());
             target[rowIndex + 1][colIndex - gap] = "/";
             toArray(curNode.getLeft(), rowIndex + 2, colIndex - gap * 2, target, depth);
         }
 
         //递归右子树
         if(curNode.getRight() != null) {
-            log.info("to right node: {}", curNode.getRight().getVal());
+//            log.info("to right node: {}", curNode.getRight());
             target[rowIndex + 1][colIndex + gap] = "\\";
             toArray(curNode.getRight(), rowIndex + 2, colIndex + gap * 2, target, depth);
         }
